@@ -1,0 +1,29 @@
+div.form-groups{
+    width: 300px;
+    margin: 20px;
+    padding: 20px;
+    background: linear-gradient(45deg, dodgerblue,white,purple);
+    border-radius: 4px;
+    font-size: 12px;
+}
+
+label{
+    width: 140px;
+    display: inline-block;
+    margin: 0.2cm;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+form {
+    border-radius: 24px;
+    filter: drop-shadow(2px 2px 2px #000);
+    width: 264px;
+    height: 400px;
+    background-color: #C0C0C0;
+    position: absolute;
+    padding: 40px 40px 40px;
+    top: 150px;
+    left: 470px;
+    border: 1px #696969;
+}

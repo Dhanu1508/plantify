@@ -1,0 +1,195 @@
+<html>
+  <head>
+<link rel="stylesheet" href="style.css">
+<style>
+  body {
+  background-image: url('green.jpg');
+  }
+</style>
+<!--Form Section-->
+<br /><br />
+<h2 style="text-align: center; margin: 0px; color: rgb(235, 224, 224)">
+  <b>Find out the most suitable crop to grow in your farm</b>
+</h2>
+<br />
+<div
+  style="
+    width: 350px;
+    height: 50rem;
+    margin: 0px auto;
+    color: rgb(14, 13, 13);
+    border-radius: 25px;
+    padding: 10px 10px;
+  "
+>
+  <form method="POST" action="{{ url_for('crop_prediction') }}">
+    <div class="form-group">
+      <label for="Nitrogen" style="font-size: 17px"><b>Nitrogen</b></label>
+      <input
+        type="number"
+        class="form-control"
+        id="Nitrogen"
+        name="nitrogen"
+        placeholder="Enter the value (example:50)"
+        style="font-weight: bold"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="Phosphorous" style="font-size: 17px"
+        ><b>Phosphorous</b></label
+      >
+      <input
+        type="number"
+        class="form-control"
+        id="Phosphorous"
+        name="phosphorous"
+        placeholder="Enter the value (example:50)"
+        style="font-weight: bold"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="Pottasium" style="font-size: 17px"><b>Pottasium</b></label>
+      <input
+        type="number"
+        class="form-control"
+        id="Pottasium"
+        name="pottasium"
+        placeholder="Enter the value (example:50)"
+        style="font-weight: bold"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="ph" style="font-size: 17px"><b>ph level</b></label>
+      <input
+        type="number"
+        step="0.01"
+        class="form-control"
+        id="ph"
+        name="ph"
+        placeholder="Enter the value"
+        style="font-weight: bold"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="Rainfall" style="font-size: 17px"><b>Rainfall (in mm)</b></label>
+      <input
+        type="number"
+        step="0.01"
+        class="form-control"
+        id="Rainfall"
+        name="rainfall"
+        placeholder="Enter the value"
+        style="font-weight: bold"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="State" style="font-size: 17px "><b>State</b></label>
+      <select>
+        onchange="print_city('state', this.selectedIndex);"
+        id="sts"
+        name="stt"
+        class="form-control"
+        style="font-weight: bold; color: black;"
+        
+        required
+        >
+        <option selected>select state</option>
+        <option>Andhra Pradesh</option>
+        <option>Arunachal Pradesh</option>
+        <option>Assam</option>
+        <option>Bihar</option>
+        <option>Chhattisgarh</option>
+        <option>Goa</option>
+        <option>Gujarat</option>
+        <option>Haryana</option>
+        <option>Himachal Pradesh</option>
+        <option>Jharkhand</option>
+        <option>Karnataka</option>
+        <option>Kerala</option>
+        <option>Madhya Pradesh</option>
+        <option>Maharashtra</option>
+        <option>Manipur</option>
+        <option>Meghalaya</option>
+        <option>Mizoram</option>
+        <option>Nagaland</option>
+        <option>Odisha</option>
+        <option>Punjab</option>
+        <option>Rajasthan</option>
+        <option>Sikkim</option>
+        <option>Tamil Nadu</option>
+        <option>Telangana</option>
+        <option>Tripura</option>
+        <option>Uttar Pradesh</option>
+        <option>Uttarakhand</option>
+        <option>West Bengal</option>
+      </select>
+      <br />
+      <label for="City" style="font-size: 17px"><b>City</b></label>
+      <select
+        id="state"
+        class="form-control"
+        name="city"
+        style="font-weight: bold; color: black;"
+        required
+      >
+      <option selected>select city</option>
+      <option>kanchipuram</option>
+      <option>Chennai</option>>	                                      
+      <option>Coimbatore</option>	                      
+      <option>Madurai</option>                                
+      <option>Tiruchirappalli</option>                  
+      <option>salem</option>                         
+      <option>Tirunelveli</option>                
+      <option>Tiruppur</option>  	              
+      <option>Vellore</option> 	                        
+      <option>Erode</option>  	                         
+      <option>Thoothukkudi</option>                 
+      <option>Dindigul</option>                 
+      <option>Thanjavur</option>                 
+      <option>Ranipet</option>                    
+      <option>Sivakasi</option>              
+      <option>Karur</option>                       
+      <option>Udhagamandalam</option>  	          
+      <option>Hosur</option>                            
+      <option>Nagercoil</option>                                     
+      <option>Kumarapalayam</option>               	
+      <option>Karaikkudi</option>             
+      <option>Neyveli</option>  	                         
+      <option>Cuddalore</option>                              
+      <option>Kumbakonam</option>                     
+      <option>Tiruvannamalai</option>  	                      
+      <option>Pollachi</option>                            
+      <option>Rajapalayam</option>                                   
+      <option>Gudiyatham</option>                               
+      <option>Pudukottai</option>                                     
+      <option>Vaniyambadi</option>                                     
+      <option>Ambur</option> 	                                       
+      <optionn>Nagapattinam</option>
+      </select>
+      <script language="javascript">
+        print_state("sts");
+      </script>
+    </div>
+
+    <div class="d-flex justify-content-center">
+      <button
+        type="submit"
+        class="btn btn-info"
+        style="color: black; font-weight: bold; width: 130px; height:50px; margin: 50px; border-radius:15px;font-size: 21px;"
+      >
+        Predict
+      </button>
+    </div>
+  </form>
+</div>
+
+
+
+<!-- Form section -->
+
